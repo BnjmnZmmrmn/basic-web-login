@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="404page" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+  </head>
+  <body>
+    <main>
+    <div class="loginContainer">
+        <h1 class="loginHeader">Secure Login</h1>
+        <form action="/login/verify" method="post" class="loginForm">
+            <input type="text" name="username" id="username" placeholder="Username" required />
+            <input type="password" name="password" id="password" placeholder="Password" required />
+            <input type="submit" value="Verify Credentials">
+        </form>
+        <div id="userExistsPopup" class="popup">
+          <p>Username does not exist.</p>
+        </div>
+        <div id="invalidCredentialsPopup" class="popup">
+          <p>Invalid credentials.</p>
+        </div>
+    </div>
+    </main>
+    <script defer>
+      const uePopup = document.getElementById('userExistsPopup')
+      const icPopup = document.getElementById('invalidCredentialsPopup')
+      if (<%= uef %> != 0) {
+        uePopup.style.visibility = 'visible'
+      }
+      if (<%= clf %> != 0) {
+        icPopup.style.visibility = 'visible'
+      }
+  </script>
+  </body>
+</html>
